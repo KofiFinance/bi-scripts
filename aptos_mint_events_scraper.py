@@ -93,7 +93,7 @@ class AptosMintEventsScraper:
         query = """
         query MyQuery($event_type: String!) {
           events(
-            where: {type: {_eq: $event_type}}
+            where: {indexed_type: {_eq: $event_type}}
           ) {
             data
           }
