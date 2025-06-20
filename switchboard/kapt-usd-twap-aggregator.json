@@ -1,0 +1,27 @@
+{
+  "name": "kAPT_USD_TWAP_Aggregator",
+  "tasks": [
+    {
+      "httpTask": {
+        "url": "https://fullnode.mainnet.aptoslabs.com/v1/accounts/0xbab8526a9eb7403a444fcc1f73bf02d8f94dafd3c88a02b5736a1a77fafe4169/resources",
+        "method": "METHOD_GET"
+      }
+    },
+    {
+      "jsonParseTask": {
+        "path": "$.[?(@.type == '0x8b4a2c4bb53857c718a04c020b98f8c2e1f99a68b0f57389a8bf5434cd22e05c::pool_v3::LiquidityPoolV3')].data.sqrt_price",
+        "aggregationMethod": "NONE"
+      }
+    },
+    {
+      "divideTask": {
+        "scalar": 18446744073709552000
+      }
+    },
+    {
+      "powTask": {
+        "big": "2"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "kAPT_USD_Price_Feed",
+  "tasks": [
+    {
+      "twapTask": {
+        "aggregatorPubkey": "0xc0cfe429affd3fd9affa5bbdc91f3c1523af2375a17ba882b93797b7db43bf",
+        "period": 300,
+        "weightByPropagationTime": true,
+        "minSamples": 3,
+        "endingUnixTimestamp": null
+      }
+    },
+    {
+      "multiplyTask": {
+        "tasks": [
+          {
+            "oracleTask": {
+              "pythAddress": "FNNvb1AFDnDVPkocEri8mWbJ1952HQZtFLuwPiUjSJQ",
+              "pythConfigs": {
+                "pythAllowedConfidenceInterval": 1,
+                "maxStaleSeconds": 15
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
